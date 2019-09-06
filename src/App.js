@@ -18,6 +18,11 @@ class App extends Component {
     };
   }
 
+  //Closure & Currying
+updateField = field => e => {
+  this.setState({[field]: e.target.value});
+}
+
   render() {
     return (
       <Fragment>
@@ -29,7 +34,10 @@ class App extends Component {
             {/* Note List */}
           </Grid>
           <Grid item xs={8}>
-            <NotesForm/>
+            <NotesForm 
+            title={this.state.title}
+            description={this.state.description}
+            updateField={this.updateField}/>
           </Grid>
         </Grid>
         <Fab color="primary" className="addIcon">

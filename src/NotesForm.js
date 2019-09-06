@@ -4,20 +4,34 @@ import Grid from "@material-ui/core/Grid";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
 
-const NotesForm = () => {
+const NotesForm = ({ title, description, updateField }) => {
     return (
         <Fragment>
             <Grid item xs={12}>
-                <TextField type="text" label="Title" margin="normal" fullWidth/>
+                <TextField
+                    type="text"
+                    label="Title"
+                    margin="normal"
+                    fullWidth
+                    onChange={updateField("title")}
+                    value={title} 
+                />
             </Grid>
             <Grid item xs={12}>
-            <TextField multiline placeholder= "Start taking notes..." margin ="normal" fullWidth/>
+                <TextField
+                    multiline
+                    placeholder="Start taking notes..."
+                    margin="normal"
+                    fullWidth
+                    onChange={updateField("description")}
+                    value={description}
+                />
         </Grid>
         <Fab color="secondary" className="editIcon">
-            <Icon>edit_icon</Icon>
-        </Fab>
+                    <Icon>edit_icon</Icon>
+                </Fab>
         </Fragment>
     )
-};
-
+        };
+        
 export default NotesForm;
