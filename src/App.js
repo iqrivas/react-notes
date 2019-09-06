@@ -20,10 +20,30 @@ class App extends Component {
 
   //Closure & Currying
 updateField = field => e => {
-  this.setState({[field]: e.target.value});
+  this.setState({
+    [field]: e.target.value
+  });
+};
+
+saveNote = () => {
+  if (this.state.title && this.state.description) {
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        {
+          id: Date.now(),
+          title: this.state.title,
+          description: this.state.description
+        }],
+      title: "",
+      description: ""
+    });
+    alert("Se ha guardado la nota " + this.state.title + " !!!");
+  }
 }
 
   render() {
+    console.log(this.state);
     return (
       <Fragment>
         <Typografy align="center" variant="h2" gutterBottom>
@@ -37,7 +57,8 @@ updateField = field => e => {
             <NotesForm 
             title={this.state.title}
             description={this.state.description}
-            updateField={this.updateField}/>
+            updateField={this.updateField}
+            saveNote={this.saveNote}/>
           </Grid>
         </Grid>
         <Fab color="primary" className="addIcon">
