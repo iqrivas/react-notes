@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from "react";
 //Material UI Imports
-import Typografy from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 
 import NotesForm from  "./NotesForm";
-
+import NotesList from  "./NotesList";
 
 class App extends Component {
   constructor(props) {
@@ -46,12 +46,12 @@ saveNote = () => {
     console.log(this.state);
     return (
       <Fragment>
-        <Typografy align="center" variant="h2" gutterBottom>
+        <Typography align="center" variant="h2" gutterBottom>
           My Notes
-        </Typografy>
+        </Typography>
         <Grid container justify="center" spacing={2}>
           <Grid item xs={4}>
-            {/* Note List */}
+            <NotesList notes={this.state.notes} />
           </Grid>
           <Grid item xs={8}>
             <NotesForm 
