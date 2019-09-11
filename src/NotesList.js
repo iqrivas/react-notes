@@ -7,12 +7,13 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const NotesList = ({notes}) => {
     return notes.length ? (
         <List>
         {notes.map(note => (
-            <ListItem button key={note.id}>
+            <ListItem button key={note.id} component={Link} to={`/view/${note.id}`}>
                 <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YYYY")} />
                 <ListItemSecondaryAction>
                     <IconButton>
