@@ -4,9 +4,12 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-
+// Notes Component
 import NotesForm from  "./NotesForm";
 import NotesList from  "./NotesList";
+import Home from "./Home";
+//React Router
+import { Link, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -54,14 +57,17 @@ saveNote = () => {
             <NotesList notes={this.state.notes} />
           </Grid>
           <Grid item xs={8}>
-            <NotesForm 
-            title={this.state.title}
-            description={this.state.description}
-            updateField={this.updateField}
-            saveNote={this.saveNote}/>
+            <Route exact path="/" component={Home} />
+            <Route path="/add" render={() => (
+              <NotesForm
+                title={this.state.title}
+                description={this.state.description}
+                updateField={this.updateField}
+                saveNote={this.saveNote} />
+            )} />
           </Grid>
         </Grid>
-        <Fab color="primary" className="addIcon">
+        <Fab color="primary" className="addIcon" component={Link} to="/add">
           <AddIcon/>
         </Fab>
       </Fragment>
