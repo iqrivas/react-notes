@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 // Notes Component
 import NotesForm from  "./NotesForm";
 import NotesList from  "./NotesList";
+import Note from "./Note";
 import Home from "./Home";
 //React Router
 import { Link, Route } from "react-router-dom";
@@ -65,6 +66,7 @@ saveNote = () => {
                 updateField={this.updateField}
                 saveNote={this.saveNote} />
             )} />
+            <Route path="/view/:id" render={props => <Note {...props} notes={this.state.notes} />} />
           </Grid>
         </Grid>
         <Fab color="primary" className="addIcon" component={Link} to="/add">
