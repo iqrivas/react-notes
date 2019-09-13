@@ -9,14 +9,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 
-const NotesList = ({notes}) => {
+const NotesList = ({notes, deleteNote}) => {
     return notes.length ? (
         <List>
         {notes.map(note => (
             <ListItem button key={note.id} component={Link} to={`/view/${note.id}`}>
                 <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YYYY")} />
                 <ListItemSecondaryAction>
-                    <IconButton>
+                    <IconButton onClick={() => deleteNote(note.id)} >
                         <DeleteIcon />
                     </IconButton>
                 </ListItemSecondaryAction>
